@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCD22E4E467005976DF /* AppDelegate.swift */; };
 		12AEFFD022E4E467005976DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCF22E4E467005976DF /* ViewController.swift */; };
-		12AEFFD322E4E467005976DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFD122E4E467005976DF /* Main.storyboard */; };
 		12AEFFD622E4E467005976DF /* Roommates.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFD422E4E467005976DF /* Roommates.xcdatamodeld */; };
 		12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFD722E4E46A005976DF /* Assets.xcassets */; };
-		12AEFFDB22E4E46A005976DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFD922E4E46A005976DF /* LaunchScreen.storyboard */; };
+		12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE222E4E4A7005976DF /* Main.storyboard */; };
+		12AEFFE522E4E4A7005976DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		12AEFFCA22E4E467005976DF /* Roommates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEFFCD22E4E467005976DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12AEFFCF22E4E467005976DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		12AEFFD222E4E467005976DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		12AEFFD522E4E467005976DF /* Roommates.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Roommates.xcdatamodel; sourceTree = "<group>"; };
 		12AEFFD722E4E46A005976DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		12AEFFDA22E4E46A005976DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12AEFFDC22E4E46A005976DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12AEFFE222E4E4A7005976DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +56,11 @@
 		12AEFFCC22E4E467005976DF /* Roommates */ = {
 			isa = PBXGroup;
 			children = (
+				12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */,
+				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
 				12AEFFCD22E4E467005976DF /* AppDelegate.swift */,
 				12AEFFCF22E4E467005976DF /* ViewController.swift */,
-				12AEFFD122E4E467005976DF /* Main.storyboard */,
 				12AEFFD722E4E46A005976DF /* Assets.xcassets */,
-				12AEFFD922E4E46A005976DF /* LaunchScreen.storyboard */,
 				12AEFFDC22E4E46A005976DF /* Info.plist */,
 				12AEFFD422E4E467005976DF /* Roommates.xcdatamodeld */,
 			);
@@ -125,9 +125,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12AEFFDB22E4E46A005976DF /* LaunchScreen.storyboard in Resources */,
+				12AEFFE522E4E4A7005976DF /* LaunchScreen.storyboard in Resources */,
 				12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */,
-				12AEFFD322E4E467005976DF /* Main.storyboard in Resources */,
+				12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,25 +145,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		12AEFFD122E4E467005976DF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				12AEFFD222E4E467005976DF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		12AEFFD922E4E46A005976DF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				12AEFFDA22E4E46A005976DF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		12AEFFDD22E4E46A005976DF /* Debug */ = {
