@@ -4,12 +4,6 @@ import Firebase
 import Foundation
 
 
-class Grocery {
-    var item = ""
-    var postedby = ""
-    var status = false
-}
-
 struct GroceryItem {
     
     let ref: DatabaseReference?

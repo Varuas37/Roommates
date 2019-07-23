@@ -14,10 +14,10 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //MARK: Connections and Variables
     var blur = UIVisualEffectView()
-    var GroceryList : [Grocery] = [Grocery]()
-    var completedGrocery: [Grocery] = [Grocery]()
     var items : [GroceryItem] = [GroceryItem]()
-    let ref = Database.database().reference(withPath: "GroceryList")
+    var CompletedItems: [GroceryItem] = [GroceryItem]()
+    let ref = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))")
+    let Completedref = Database.database().reference(withPath:"ComletedGroceryList\(String(describing: Auth.auth().currentUser?.uid))")
     
 
 //    Pop-over View
@@ -31,22 +31,24 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    MARK: Add and Cancel Buttons
     @IBAction func btnAddNewItem(_ sender: Any) {
 //        Adding the Grocery Object
-        let grocery = Grocery()
         if lblNewItem.text! == "" {
             ViewAddItem.shake()
 //            lblNewItem.textColor = UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1)
             lblNewItem.placeholder! = "Item field is empty"
+//            lblNewItem.text! = "Empty"
+             lblPostedBy.placeholder! = Auth.auth().currentUser?.email ?? ""
             
         }
-        else{
-//        Dismiss the view and reset it to normal
+       
+        else if lblNewItem.text != "" {
+            //        Dismiss the view and reset it to normal
             lblNewItem.placeholder! = "New Item"
             self.ViewAddItem.removeFromSuperview()
             self.blur.removeFromSuperview()
-           
+            
             //Grocery Item -- Firebase
             let groceryItem = GroceryItem(name: lblNewItem.text!,
-                                          addedByUser: lblPostedBy.text!,
+                                          addedByUser: Auth.auth().currentUser?.email ?? "nil",
                                           completed: false)
             // 3
             let groceryItemRef = self.ref.child(lblNewItem.text!.lowercased())
@@ -55,15 +57,14 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             groceryItemRef.setValue(groceryItem.toAnyObject())
             
             //Assign Values
-            grocery.item = lblNewItem.text!.lowercased()
-            grocery.postedby = lblPostedBy.text!.lowercased()
-            grocery.status = false
-            GroceryList.append(grocery)
+            
+            //Reload tableView
+            TableView.reloadData()
+            //Reset the textfield values to nil
+            resetText()
         }
-        //Reload tableView
-        TableView.reloadData()
-        //Reset the textfield values to nil
-        resetText()
+       
+
     }
     
     @IBAction func btncancel(_ sender: Any) {
@@ -88,7 +89,8 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print(ref)
+        
+        
         //Blur
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -118,6 +120,21 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.TableView.reloadData()
         })
         
+        Completedref.observe(.value, with: { snapshot in
+            var CompletedItems: [GroceryItem] = []
+            for child in snapshot.children{
+                if let snapshot = child as? DataSnapshot,
+                    let groceryItem = GroceryItem(snapshot: snapshot){
+                    CompletedItems.append(groceryItem)
+                    
+                }
+            }
+            self.CompletedItems = CompletedItems
+            self.CompletedTableView.reloadData()
+            
+        })
+        
+        
     }
     
     
@@ -128,7 +145,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
              rows = items.count
         }
         else if tableView == self.CompletedTableView{
-            rows =  completedGrocery.count
+            rows =  CompletedItems.count
         }
        return rows
     }
@@ -146,13 +163,13 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         else if tableView == self.CompletedTableView {
             let Ccell = tableView.dequeueReusableCell(withIdentifier: "completedCell", for: indexPath) as! CompletedTableViewCell
-            Ccell.lblCompletedItem.text = completedGrocery[indexPath.row].item
-            Ccell.lblCompletedPostedBy.text = completedGrocery[indexPath.row].postedby
+            Ccell.lblCompletedItem.text = CompletedItems[indexPath.row].name
+            Ccell.lblCompletedPostedBy.text =  CompletedItems[indexPath.row].addedByUser
             Ccell.selectionStyle = .none
             cellToReturn = Ccell
 
         }
-        lblNumberOfItems.text = "\(GroceryList.count) Items"
+        lblNumberOfItems.text = "\(items.count) Items"
         return cellToReturn;
         
     }
@@ -166,29 +183,47 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         {
             let status = UIContextualAction()
             var itemtoreturn = UISwipeActionsConfiguration(actions: [status])
-            
+
             if tableView == self.TableView{
                 let Completed = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                    self.completedGrocery.append(self.GroceryList[indexPath.row])
-                    self.GroceryList.remove(at: indexPath.row)
+                    //Append the Data to the Database.
+                    let CompletedgroceryItem = GroceryItem(name: self.items[indexPath.row].name,
+                                                  addedByUser: self.items[indexPath.row].addedByUser,
+                                                  completed: true)
+                    // 3
+                    let CompletedgroceryItemRef = self.Completedref.child(self.items[indexPath.row].name.lowercased())
                     
+                    // 4
+                    CompletedgroceryItemRef.setValue(CompletedgroceryItem.toAnyObject())
+                    print(CompletedgroceryItem)
+                    //Append it to CompletedItems
+                    self.CompletedItems.append(CompletedgroceryItem)
+                    print(self.CompletedItems)
+                   
+                    //Delete the Item from the Completed Database
+                    let deletedItem = self.ref.child(self.items[indexPath.row].name.lowercased())
+                    deletedItem.removeValue()
+                    //Remove item from array
+                    self.items.remove(at: indexPath.row)
                     self.TableView.deleteRows(at: [indexPath], with: .fade)
-                    
+                   
                     self.CompletedTableView.reloadData()
                     //                print(self.GroceryList[indexPath.row])
                     success(true)
-                    
+        
+
                 })
                 //            closeAction.image = UIImage(named: "checked")
                 Completed.backgroundColor = .white
                 itemtoreturn = UISwipeActionsConfiguration(actions: [Completed])
             }
-                
+
             else if tableView == self.CompletedTableView{
                 let Completed = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                    
+
                     do {
-                        self.completedGrocery.remove(at: indexPath.row)
+                        let delete = self.Completedref.child(self.CompletedItems[indexPath.row].name.lowercased())
+                        delete.removeValue()
                         self.CompletedTableView.deleteRows(at: [indexPath], with: .fade)
                         self.CompletedTableView.reloadData()
                     }
@@ -196,45 +231,46 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
                         print(error)
                     }
                 success(true)
-                    
+
                 })
                 //            closeAction.image = UIImage(named: "checked")
                 Completed.backgroundColor = .white
                 itemtoreturn = UISwipeActionsConfiguration(actions: [Completed])
             }
-            
+
             return itemtoreturn
         }
-    
+
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            
-            self.view.addSubview(self.blur)
-            self.view.addSubview(self.ViewAddItem)
-            self.ViewAddItem.center = self.view.center
-            self.lblNewItem.text = self.GroceryList[indexPath.row].item
-            self.lblPostedBy.text = self.GroceryList[indexPath.row].postedby
-            self.GroceryList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            success(true)
+//
+//            self.view.addSubview(self.blur)
+//            self.view.addSubview(self.ViewAddItem)
+//            self.ViewAddItem.center = self.view.center
+//            self.lblNewItem.text = self.GroceryList[indexPath.row].item
+//            self.lblPostedBy.text = self.GroceryList[indexPath.row].postedby
+//            self.GroceryList.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//            success(true)
         })
 //        modifyAction.image = UIImage(named: "hammer")
         modifyAction.backgroundColor = .white
-        
+
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
 
+
+
     
-    
-        
 
     func resetText(){
         lblNewItem.text = ""
         lblPostedBy.text = ""
     }
+
     
 }
 

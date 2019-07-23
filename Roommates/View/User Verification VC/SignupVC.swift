@@ -27,7 +27,7 @@ class SignupVC: UIViewController {
             if error == nil{
                 Auth.auth().signIn(withEmail: self.email, password: self.password)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabController") as! tabBarViewController
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabControllerVC") as! tabBarViewController
                 self.present(newViewController, animated: true, completion: nil)
             }
             else{
