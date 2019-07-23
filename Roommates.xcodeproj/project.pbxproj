@@ -3,19 +3,36 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1210714922E6E1D00054CC6C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714822E6E1D00054CC6C /* SignupVC.swift */; };
+		1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714A22E6E1DC0054CC6C /* LoginViewController.swift */; };
+		1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714E22E6F38B0054CC6C /* tabBarViewController.swift */; };
+		128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128F97DF22E542B500EEFC54 /* Default-568h@2x.png */; };
 		12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCD22E4E467005976DF /* AppDelegate.swift */; };
 		12AEFFD022E4E467005976DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCF22E4E467005976DF /* ViewController.swift */; };
 		12AEFFD622E4E467005976DF /* Roommates.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFD422E4E467005976DF /* Roommates.xcdatamodeld */; };
 		12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFD722E4E46A005976DF /* Assets.xcassets */; };
 		12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE222E4E4A7005976DF /* Main.storyboard */; };
 		12AEFFE522E4E4A7005976DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */; };
+		12CC993F22E4E83600C50C71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12CC993E22E4E83600C50C71 /* GoogleService-Info.plist */; };
+		12DBF09D22E546DA007BB6A0 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF09C22E546DA007BB6A0 /* Grocery.swift */; };
+		12DBF09F22E5479F007BB6A0 /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */; };
+		12DBF0A322E548B1007BB6A0 /* GroceryCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF0A122E548B1007BB6A0 /* GroceryCustomCell.swift */; };
+		12DBF0A422E548B1007BB6A0 /* GroceryCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DBF0A222E548B1007BB6A0 /* GroceryCustomCell.xib */; };
+		12DBF0A922E5E28F007BB6A0 /* CompletedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF0A722E5E28F007BB6A0 /* CompletedTableViewCell.swift */; };
+		12DBF0AA22E5E28F007BB6A0 /* CompletedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12DBF0A822E5E28F007BB6A0 /* CompletedTableViewCell.xib */; };
+		2EFD60CEB67A1BDF8B296FB9 /* Pods_Roommates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1263C6487B444ED3BC9944 /* Pods_Roommates.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1210714822E6E1D00054CC6C /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		1210714A22E6E1DC0054CC6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1210714D22E6EB9D0054CC6C /* Roommates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roommates.entitlements; sourceTree = "<group>"; };
+		1210714E22E6F38B0054CC6C /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tabBarViewController.swift; path = Roommates/View/tabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		128F97DF22E542B500EEFC54 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		12AEFFCA22E4E467005976DF /* Roommates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEFFCD22E4E467005976DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12AEFFCF22E4E467005976DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +41,16 @@
 		12AEFFDC22E4E46A005976DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12AEFFE222E4E4A7005976DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12CC993E22E4E83600C50C71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		12DBF09C22E546DA007BB6A0 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
+		12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewController.swift; sourceTree = "<group>"; };
+		12DBF0A122E548B1007BB6A0 /* GroceryCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCustomCell.swift; sourceTree = "<group>"; };
+		12DBF0A222E548B1007BB6A0 /* GroceryCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroceryCustomCell.xib; sourceTree = "<group>"; };
+		12DBF0A722E5E28F007BB6A0 /* CompletedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedTableViewCell.swift; sourceTree = "<group>"; };
+		12DBF0A822E5E28F007BB6A0 /* CompletedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompletedTableViewCell.xib; sourceTree = "<group>"; };
+		32AD610ED27491AA9632D21E /* Pods-Roommates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roommates.debug.xcconfig"; path = "Target Support Files/Pods-Roommates/Pods-Roommates.debug.xcconfig"; sourceTree = "<group>"; };
+		53A101563A00E6D80854D91C /* Pods-Roommates.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Roommates.release.xcconfig"; path = "Target Support Files/Pods-Roommates/Pods-Roommates.release.xcconfig"; sourceTree = "<group>"; };
+		BB1263C6487B444ED3BC9944 /* Pods_Roommates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Roommates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +58,58 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EFD60CEB67A1BDF8B296FB9 /* Pods_Roommates.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1210714C22E6E1E10054CC6C /* User Verification VC */ = {
+			isa = PBXGroup;
+			children = (
+				1210714822E6E1D00054CC6C /* SignupVC.swift */,
+				1210714A22E6E1DC0054CC6C /* LoginViewController.swift */,
+			);
+			path = "User Verification VC";
+			sourceTree = "<group>";
+		};
+		128F97DC22E5413500EEFC54 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12DBF09C22E546DA007BB6A0 /* Grocery.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		128F97DD22E5415F00EEFC54 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				12AEFFCD22E4E467005976DF /* AppDelegate.swift */,
+				12AEFFCF22E4E467005976DF /* ViewController.swift */,
+				12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		128F97DE22E5419F00EEFC54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */,
+				12AEFFDC22E4E46A005976DF /* Info.plist */,
+				12AEFFD422E4E467005976DF /* Roommates.xcdatamodeld */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		12AEFFC122E4E467005976DF = {
 			isa = PBXGroup;
 			children = (
+				128F97DF22E542B500EEFC54 /* Default-568h@2x.png */,
 				12AEFFCC22E4E467005976DF /* Roommates */,
 				12AEFFCB22E4E467005976DF /* Products */,
+				9D402D9C4E67BB61FA559955 /* Pods */,
+				23847DA3EBAE88CED6986FEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +124,54 @@
 		12AEFFCC22E4E467005976DF /* Roommates */ = {
 			isa = PBXGroup;
 			children = (
-				12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */,
-				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
-				12AEFFCD22E4E467005976DF /* AppDelegate.swift */,
-				12AEFFCF22E4E467005976DF /* ViewController.swift */,
+				1210714D22E6EB9D0054CC6C /* Roommates.entitlements */,
+				128F97DC22E5413500EEFC54 /* Model */,
+				128F97DD22E5415F00EEFC54 /* Controller */,
+				12CC993D22E4E54700C50C71 /* View */,
 				12AEFFD722E4E46A005976DF /* Assets.xcassets */,
-				12AEFFDC22E4E46A005976DF /* Info.plist */,
-				12AEFFD422E4E467005976DF /* Roommates.xcdatamodeld */,
+				12CC993E22E4E83600C50C71 /* GoogleService-Info.plist */,
+				128F97DE22E5419F00EEFC54 /* Supporting Files */,
 			);
 			path = Roommates;
+			sourceTree = "<group>";
+		};
+		12CC993D22E4E54700C50C71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1210714C22E6E1E10054CC6C /* User Verification VC */,
+				12DBF0A022E54870007BB6A0 /* Grocery */,
+				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12DBF0A022E54870007BB6A0 /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+				12DBF0A122E548B1007BB6A0 /* GroceryCustomCell.swift */,
+				12DBF0A222E548B1007BB6A0 /* GroceryCustomCell.xib */,
+				12DBF0A722E5E28F007BB6A0 /* CompletedTableViewCell.swift */,
+				12DBF0A822E5E28F007BB6A0 /* CompletedTableViewCell.xib */,
+				1210714E22E6F38B0054CC6C /* tabBarViewController.swift */,
+			);
+			path = Grocery;
+			sourceTree = "<group>";
+		};
+		23847DA3EBAE88CED6986FEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB1263C6487B444ED3BC9944 /* Pods_Roommates.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D402D9C4E67BB61FA559955 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32AD610ED27491AA9632D21E /* Pods-Roommates.debug.xcconfig */,
+				53A101563A00E6D80854D91C /* Pods-Roommates.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12AEFFDF22E4E46A005976DF /* Build configuration list for PBXNativeTarget "Roommates" */;
 			buildPhases = (
+				DFA6979160F02430A708E522 /* [CP] Check Pods Manifest.lock */,
 				12AEFFC622E4E467005976DF /* Sources */,
 				12AEFFC722E4E467005976DF /* Frameworks */,
 				12AEFFC822E4E467005976DF /* Resources */,
+				5BD7085473320E75FD185D6E /* [CP] Embed Pods Frameworks */,
+				97787150FDEF12F97643E82F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,6 +209,11 @@
 				TargetAttributes = {
 					12AEFFC922E4E467005976DF = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,22 +240,92 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12DBF0A422E548B1007BB6A0 /* GroceryCustomCell.xib in Resources */,
 				12AEFFE522E4E4A7005976DF /* LaunchScreen.storyboard in Resources */,
+				12CC993F22E4E83600C50C71 /* GoogleService-Info.plist in Resources */,
+				12DBF0AA22E5E28F007BB6A0 /* CompletedTableViewCell.xib in Resources */,
 				12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */,
+				128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */,
 				12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5BD7085473320E75FD185D6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97787150FDEF12F97643E82F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Roommates/Pods-Roommates-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFA6979160F02430A708E522 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Roommates-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		12AEFFC622E4E467005976DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */,
+				12DBF0A922E5E28F007BB6A0 /* CompletedTableViewCell.swift in Sources */,
 				12AEFFD022E4E467005976DF /* ViewController.swift in Sources */,
 				12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */,
+				1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */,
+				12DBF0A322E548B1007BB6A0 /* GroceryCustomCell.swift in Sources */,
+				12DBF09F22E5479F007BB6A0 /* GroceryViewController.swift in Sources */,
+				1210714922E6E1D00054CC6C /* SignupVC.swift in Sources */,
 				12AEFFD622E4E467005976DF /* Roommates.xcdatamodeld in Sources */,
+				12DBF09D22E546DA007BB6A0 /* Grocery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,11 +450,13 @@
 		};
 		12AEFFE022E4E46A005976DF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32AD610ED27491AA9632D21E /* Pods-Roommates.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Roommates/Roommates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F64XCDBH8;
-				INFOPLIST_FILE = Roommates/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Roommates/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -283,11 +470,13 @@
 		};
 		12AEFFE122E4E46A005976DF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53A101563A00E6D80854D91C /* Pods-Roommates.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Roommates/Roommates.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8F64XCDBH8;
-				INFOPLIST_FILE = Roommates/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Roommates/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
