@@ -40,7 +40,8 @@ struct GroceryItem {
         return [
             "name": name,
             "addedByUser": addedByUser,
-            "completed": completed
+            "completed": completed,
+            "key": key
         ]
     }
 }

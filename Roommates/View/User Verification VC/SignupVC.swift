@@ -26,6 +26,8 @@ class SignupVC: UIViewController {
             
             if error == nil{
                 Auth.auth().signIn(withEmail: self.email, password: self.password)
+                let ref = Database.database().reference(withPath: "Users")
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabControllerVC") as! tabBarViewController
                 self.present(newViewController, animated: true, completion: nil)

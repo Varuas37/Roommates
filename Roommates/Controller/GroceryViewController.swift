@@ -15,41 +15,35 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Connections and Variables
     var blur = UIVisualEffectView()
     var items : [GroceryItem] = [GroceryItem]()
-    var CompletedItems: [GroceryItem] = [GroceryItem]()
     let ref = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))")
-    let Completedref = Database.database().reference(withPath:"ComletedGroceryList\(String(describing: Auth.auth().currentUser?.uid))")
-    
+    var i = 0
+    var DeleteItem = false
 
 //    Pop-over View
     @IBOutlet var ViewAddItem: UIView!
     @IBOutlet weak var lblNewItem: UITextField!
-    @IBOutlet weak var lblPostedBy: UITextField!
     @IBOutlet weak var lblNumberOfItems: UILabel!
     @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var CompletedTableView: UITableView!
+    @IBOutlet weak var UIViewBottomContainer: UIView!
     
     //    MARK: Add and Cancel Buttons
     @IBAction func btnAddNewItem(_ sender: Any) {
-//        Adding the Grocery Object
+
         if lblNewItem.text! == "" {
             ViewAddItem.shake()
-//            lblNewItem.textColor = UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1)
             lblNewItem.placeholder! = "Item field is empty"
-//            lblNewItem.text! = "Empty"
-             lblPostedBy.placeholder! = Auth.auth().currentUser?.email ?? ""
-            
         }
-       
         else if lblNewItem.text != "" {
-            //        Dismiss the view and reset it to normal
+            //Dismiss the view and reset it to normal
             lblNewItem.placeholder! = "New Item"
-            self.ViewAddItem.removeFromSuperview()
-            self.blur.removeFromSuperview()
+            dismissViewAddItem()
             
             //Grocery Item -- Firebase
             let groceryItem = GroceryItem(name: lblNewItem.text!,
                                           addedByUser: Auth.auth().currentUser?.email ?? "nil",
-                                          completed: false)
+                                          completed: false,
+                                          key: "\(i)")
+            i = i+1
             // 3
             let groceryItemRef = self.ref.child(lblNewItem.text!.lowercased())
             
@@ -68,8 +62,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func btncancel(_ sender: Any) {
-        self.ViewAddItem.removeFromSuperview()
-        self.blur.removeFromSuperview()
+        dismissViewAddItem()
     }
     
     //  This is the view to add new items
@@ -89,7 +82,9 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        self.TableView.reloadData()
+        //Design few UI elements. Function is at the last of this page.
+        redesign()
         
         //Blur
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
@@ -102,11 +97,6 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         TableView.dataSource = self
         TableView.register(UINib(nibName: "GroceryCustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         TableView.separatorStyle = .none
-        //Second Table View
-        CompletedTableView.delegate = self
-        CompletedTableView.dataSource = self
-        CompletedTableView.register(UINib(nibName: "CompletedTableViewCell", bundle: nil), forCellReuseIdentifier: "completedCell")
-        CompletedTableView.separatorStyle = .none
         // Do any additional setup after loading the view.
         ref.observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
@@ -120,159 +110,142 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.TableView.reloadData()
         })
         
-        Completedref.observe(.value, with: { snapshot in
-            var CompletedItems: [GroceryItem] = []
-            for child in snapshot.children{
-                if let snapshot = child as? DataSnapshot,
-                    let groceryItem = GroceryItem(snapshot: snapshot){
-                    CompletedItems.append(groceryItem)
-                    
-                }
-            }
-            self.CompletedItems = CompletedItems
-            self.CompletedTableView.reloadData()
-            
-        })
-        
-        
     }
     
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var rows : Int = Int()
-        if tableView == self.TableView{
-             rows = items.count
-        }
-        else if tableView == self.CompletedTableView{
-            rows =  CompletedItems.count
-        }
-       return rows
+       return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cellToReturn = UITableViewCell()
-        
-        if tableView == self.TableView {
+       
+      
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GroceryCustomCell
             cell.lblItem.text = items[indexPath.row].name
             cell.lblPostedBy.text = items[indexPath.row].addedByUser
             cell.selectionStyle = .none
-            cellToReturn = cell
+            if items[indexPath.row].completed{
+                cell.lblPostedBy.text = "👍\(Auth.auth().currentUser?.email ?? "nil")"
+                cell.UIViewColor.backgroundColor = UIColor(red: 51.0/255.0, green: 100.0/255.0, blue: 130.0/255.0, alpha: 1)
+               
+                }
+            else{
+                cell.UIViewColor.backgroundColor = UIColor(red: 16.0/255.0, green: 195.0/255.0, blue: 130.0/255.0, alpha: 1)
         }
         
-        else if tableView == self.CompletedTableView {
-            let Ccell = tableView.dequeueReusableCell(withIdentifier: "completedCell", for: indexPath) as! CompletedTableViewCell
-            Ccell.lblCompletedItem.text = CompletedItems[indexPath.row].name
-            Ccell.lblCompletedPostedBy.text =  CompletedItems[indexPath.row].addedByUser
-            Ccell.selectionStyle = .none
-            cellToReturn = Ccell
-
-        }
         lblNumberOfItems.text = "\(items.count) Items"
-        return cellToReturn;
+        return cell
         
     }
-    //MARK: - Completed Table View
+   
     
     
-    
+    //MARK: Swipe Actions
     
     func tableView(_ tableView: UITableView,
                        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
         {
             let status = UIContextualAction()
             var itemtoreturn = UISwipeActionsConfiguration(actions: [status])
+            let Completed = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                
 
-            if tableView == self.TableView{
-                let Completed = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                    //Append the Data to the Database.
-                    let CompletedgroceryItem = GroceryItem(name: self.items[indexPath.row].name,
-                                                  addedByUser: self.items[indexPath.row].addedByUser,
-                                                  completed: true)
-                    // 3
-                    let CompletedgroceryItemRef = self.Completedref.child(self.items[indexPath.row].name.lowercased())
-                    
-                    // 4
-                    CompletedgroceryItemRef.setValue(CompletedgroceryItem.toAnyObject())
-                    print(CompletedgroceryItem)
-                    //Append it to CompletedItems
-                    self.CompletedItems.append(CompletedgroceryItem)
-                    print(self.CompletedItems)
-                   
-                    //Delete the Item from the Completed Database
-                    let deletedItem = self.ref.child(self.items[indexPath.row].name.lowercased())
-                    deletedItem.removeValue()
-                    //Remove item from array
-                    self.items.remove(at: indexPath.row)
-                    self.TableView.deleteRows(at: [indexPath], with: .fade)
-                   
-                    self.CompletedTableView.reloadData()
-                    //                print(self.GroceryList[indexPath.row])
-                    success(true)
-        
-
-                })
-                //            closeAction.image = UIImage(named: "checked")
-                Completed.backgroundColor = .white
-                itemtoreturn = UISwipeActionsConfiguration(actions: [Completed])
-            }
-
-            else if tableView == self.CompletedTableView{
-                let Completed = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-
-                    do {
-                        let delete = self.Completedref.child(self.CompletedItems[indexPath.row].name.lowercased())
-                        delete.removeValue()
-                        self.CompletedTableView.deleteRows(at: [indexPath], with: .fade)
-                        self.CompletedTableView.reloadData()
-                    }
-                    catch{
-                        print(error)
-                    }
+                self.items[indexPath.row].completed = true
+                let status = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))/\(self.items[indexPath.row].name.lowercased())")
+                     
+                status.updateChildValues(["completed":true])
                 success(true)
-
                 })
-                //            closeAction.image = UIImage(named: "checked")
+
+                Completed.title = "👍"
                 Completed.backgroundColor = .white
                 itemtoreturn = UISwipeActionsConfiguration(actions: [Completed])
-            }
-
             return itemtoreturn
         }
 
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
-        let modifyAction = UIContextualAction(style: .normal, title:  "Delete", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        
+        let modifyAction = UIContextualAction(style: .normal, title:  "👋", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
 //
-//            self.view.addSubview(self.blur)
-//            self.view.addSubview(self.ViewAddItem)
-//            self.ViewAddItem.center = self.view.center
-//            self.lblNewItem.text = self.GroceryList[indexPath.row].item
-//            self.lblPostedBy.text = self.GroceryList[indexPath.row].postedby
-//            self.GroceryList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//            success(true)
+            self.view.addSubview(self.blur)
+            //Adding the popOver Subview
+            self.view.addSubview(self.CustomAlert)
+            self.CustomAlert.center = self.view.center
+            self.IndexPathForCell = indexPath
+            success(true)
+            
+            
         })
-//        modifyAction.image = UIImage(named: "hammer")
+        // Uncompleted
+        let UnCompleted = UIContextualAction(style: .normal, title:  "Completed", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            
+            
+            self.items[indexPath.row].completed = true
+            let status = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))/\(self.items[indexPath.row].name.lowercased())")
+            
+            status.updateChildValues(["completed":false])
+            success(true)
+        })
+        
+        UnCompleted.title = "👎"
+        UnCompleted.backgroundColor = .white
+        
+//
         modifyAction.backgroundColor = .white
 
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+        return UISwipeActionsConfiguration(actions: [modifyAction,UnCompleted])
     }
 
-
+    func redesign(){
+        UIViewBottomContainer.roundCornersWithLayerMask(cornerRadii: 20,corners: [.topLeft,.topRight])
+        lblNewItem.layer.borderWidth = 1.0
+        lblNewItem.layer.cornerRadius = 10
+        lblNewItem.clipsToBounds = true
+    }
 
     
 
     func resetText(){
         lblNewItem.text = ""
-        lblPostedBy.text = ""
     }
 
+    //Delete Item
+    var IndexPathForCell = IndexPath()
+    @IBOutlet var CustomAlert: UIView!
+    @IBAction func btnConfirm(_ sender: Any) {
+        dismissCustomAlert()
+        let deletedItem = self.ref.child(self.items[IndexPathForCell.row].name.lowercased())
+        deletedItem.removeValue()
+        //Remove item from array
+        self.items.remove(at: IndexPathForCell.row)
+        self.TableView.deleteRows(at: [IndexPathForCell], with: .fade)
+        self.TableView.reloadData()
+    }
+    @IBAction func btnExit(_ sender: Any) {
+        dismissCustomAlert()
+    }
     
-}
+    
+    func dismissCustomAlert(){
+        self.CustomAlert.removeFromSuperview()
+        self.blur.removeFromSuperview()
+    }
+    func dismissViewAddItem(){
+        self.ViewAddItem.removeFromSuperview()
+        self.blur.removeFromSuperview()
+    }
+    
+    
+}//Closure for main
+
+
+
+
+
+
 
 extension UIView {
     func shake() {
@@ -282,4 +255,13 @@ extension UIView {
         animation.values = [-20, 20, -20, 20, -10, 10, -5, 5, 0]
         layer.add(animation, forKey: "shake")
     }
+    func roundCornersWithLayerMask(cornerRadii: CGFloat, corners: UIRectCorner) {
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: cornerRadii, height: cornerRadii))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        layer.mask = maskLayer
+    }
 }
+

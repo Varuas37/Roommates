@@ -13,6 +13,7 @@ class GroceryCustomCell: UITableViewCell {
     @IBOutlet weak var lblItem: UILabel!
     @IBOutlet weak var lblPostedBy: UILabel!
     
+    @IBOutlet weak var UIViewColor: UIView!
     
     //Completed Cell
     
