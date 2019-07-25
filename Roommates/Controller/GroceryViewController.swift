@@ -98,14 +98,15 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         TableView.register(UINib(nibName: "GroceryCustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         TableView.separatorStyle = .none
         // Do any additional setup after loading the view.
-        ref.observe(.value, with: { snapshot in
+        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
-            for child in snapshot.children{
+            for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
-                    let groceryItem = GroceryItem(snapshot: snapshot){
+                    let groceryItem = GroceryItem(snapshot: snapshot) {
                     newItems.append(groceryItem)
                 }
             }
+            
             self.items = newItems
             self.TableView.reloadData()
         })
