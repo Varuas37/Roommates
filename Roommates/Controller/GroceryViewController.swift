@@ -128,7 +128,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.selectionStyle = .none
             if items[indexPath.row].completed{
                 cell.lblPostedBy.text = "👍\(Auth.auth().currentUser?.email ?? "nil")"
-                cell.UIViewColor.backgroundColor = UIColor(red: 51.0/255.0, green: 100.0/255.0, blue: 130.0/255.0, alpha: 1)
+                cell.UIViewColor.backgroundColor = UIColor(red: 213.0/255.0, green: 112.0/255.0, blue: 133.0/255.0, alpha: 1)
                
                 }
             else{
