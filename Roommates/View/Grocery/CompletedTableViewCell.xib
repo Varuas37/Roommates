@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="completedCell" rowHeight="82" id="rTX-89-Ee7" customClass="CompletedTableViewCell" customModule="Roommates" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rTX-89-Ee7" id="G2f-WW-34o">
+                <rect key="frame" x="0.0" y="0.0" width="339" height="74.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZ7-ce-89Q" userLabel="Color">
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="67"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hat-6Q-cec">
+                                <rect key="frame" x="18" y="14" width="181" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="181" id="sEX-jp-Ww4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Posted By" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmv-eH-UDV">
+                                <rect key="frame" x="216" y="46" width="91" height="13"/>
+                                <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.047058823530000002" green="0.76470588240000004" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="kmv-eH-UDV" secondAttribute="bottom" constant="8" id="0Vs-12-1gU"/>
+                            <constraint firstItem="Hat-6Q-cec" firstAttribute="leading" secondItem="jZ7-ce-89Q" secondAttribute="leading" constant="18" id="Os8-X7-hSl"/>
+                            <constraint firstAttribute="trailing" secondItem="kmv-eH-UDV" secondAttribute="trailing" constant="32" id="eUj-Jb-hOH"/>
+                            <constraint firstItem="Hat-6Q-cec" firstAttribute="top" secondItem="jZ7-ce-89Q" secondAttribute="top" constant="14" id="hqw-Wy-5GX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="jZ7-ce-89Q" firstAttribute="top" secondItem="re9-Qz-UBk" secondAttribute="top" id="4JC-9A-bKM"/>
+                <constraint firstItem="re9-Qz-UBk" firstAttribute="trailing" secondItem="jZ7-ce-89Q" secondAttribute="trailing" id="gNP-zD-4S5"/>
+                <constraint firstItem="jZ7-ce-89Q" firstAttribute="leading" secondItem="re9-Qz-UBk" secondAttribute="leading" id="qR9-go-e4a"/>
+                <constraint firstItem="re9-Qz-UBk" firstAttribute="bottom" secondItem="jZ7-ce-89Q" secondAttribute="bottom" constant="8" id="tCd-8j-AfB"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="re9-Qz-UBk"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="Color" destination="jZ7-ce-89Q" id="K8R-fa-gb7"/>
+                <outlet property="lblCompletedItem" destination="Hat-6Q-cec" id="vzd-gf-c6T"/>
+                <outlet property="lblCompletedPostedBy" destination="kmv-eH-UDV" id="yNN-L9-mZI"/>
+            </connections>
+            <point key="canvasLocation" x="80" y="103"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1201EE8622EC375500FB9029 /* CreateRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8522EC375500FB9029 /* CreateRoomVC.swift */; };
+		1201EE8922EC4CB800FB9029 /* JoinRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */; };
+		1201EE8B22EC545B00FB9029 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */; };
+		1201EE8D22EC5BDF00FB9029 /* JoinRoomProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */; };
 		1210714922E6E1D00054CC6C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714822E6E1D00054CC6C /* SignupVC.swift */; };
 		1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714A22E6E1DC0054CC6C /* LoginViewController.swift */; };
 		1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714E22E6F38B0054CC6C /* tabBarViewController.swift */; };
 		1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210715022E712C80054CC6C /* SettingsViewController.swift */; };
-		1267EF6E22E8076B00EEC649 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1267EF6D22E8076B00EEC649 /* Test.storyboard */; };
 		128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128F97DF22E542B500EEFC54 /* Default-568h@2x.png */; };
 		12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCD22E4E467005976DF /* AppDelegate.swift */; };
 		12AEFFD022E4E467005976DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCF22E4E467005976DF /* ViewController.swift */; };
@@ -19,6 +22,7 @@
 		12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFD722E4E46A005976DF /* Assets.xcassets */; };
 		12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE222E4E4A7005976DF /* Main.storyboard */; };
 		12AEFFE522E4E4A7005976DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */; };
+		12B68A3B22EC2AF300F5D60D /* GettingStarted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B68A3A22EC2AF300F5D60D /* GettingStarted.swift */; };
 		12CC993F22E4E83600C50C71 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12CC993E22E4E83600C50C71 /* GoogleService-Info.plist */; };
 		12DBF09D22E546DA007BB6A0 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF09C22E546DA007BB6A0 /* Grocery.swift */; };
 		12DBF09F22E5479F007BB6A0 /* GroceryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */; };
@@ -30,12 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1201EE8522EC375500FB9029 /* CreateRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomVC.swift; sourceTree = "<group>"; };
+		1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomVC.swift; sourceTree = "<group>"; };
+		1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
+		1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomProfileVC.swift; sourceTree = "<group>"; };
 		1210714822E6E1D00054CC6C /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		1210714A22E6E1DC0054CC6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1210714D22E6EB9D0054CC6C /* Roommates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roommates.entitlements; sourceTree = "<group>"; };
 		1210714E22E6F38B0054CC6C /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tabBarViewController.swift; path = Roommates/View/tabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		1210715022E712C80054CC6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		1267EF6D22E8076B00EEC649 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		128F97DF22E542B500EEFC54 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		12AEFFCA22E4E467005976DF /* Roommates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEFFCD22E4E467005976DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +52,7 @@
 		12AEFFDC22E4E46A005976DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12AEFFE222E4E4A7005976DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		12AEFFE322E4E4A7005976DF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12B68A3A22EC2AF300F5D60D /* GettingStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted.swift; sourceTree = "<group>"; };
 		12CC993E22E4E83600C50C71 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12DBF09C22E546DA007BB6A0 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
 		12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +77,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1201EE8722EC4C7C00FB9029 /* Room Creation and Verification */ = {
+			isa = PBXGroup;
+			children = (
+				12B68A3A22EC2AF300F5D60D /* GettingStarted.swift */,
+				1201EE8522EC375500FB9029 /* CreateRoomVC.swift */,
+				1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */,
+				1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */,
+				1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */,
+			);
+			path = "Room Creation and Verification";
+			sourceTree = "<group>";
+		};
 		1210714C22E6E1E10054CC6C /* User Verification VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +164,9 @@
 			children = (
 				1210714C22E6E1E10054CC6C /* User Verification VC */,
 				12DBF0A022E54870007BB6A0 /* Grocery */,
-				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
-				1267EF6D22E8076B00EEC649 /* Test.storyboard */,
+				1201EE8722EC4C7C00FB9029 /* Room Creation and Verification */,
 				1210715022E712C80054CC6C /* SettingsViewController.swift */,
+				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,7 +272,6 @@
 				12DBF0AA22E5E28F007BB6A0 /* CompletedTableViewCell.xib in Resources */,
 				12AEFFD822E4E46A005976DF /* Assets.xcassets in Resources */,
 				128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */,
-				1267EF6E22E8076B00EEC649 /* Test.storyboard in Resources */,
 				12AEFFE422E4E4A7005976DF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,17 +342,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1201EE8B22EC545B00FB9029 /* CreateProfileVC.swift in Sources */,
 				1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */,
+				1201EE8622EC375500FB9029 /* CreateRoomVC.swift in Sources */,
 				12DBF0A922E5E28F007BB6A0 /* CompletedTableViewCell.swift in Sources */,
 				1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */,
 				12AEFFD022E4E467005976DF /* ViewController.swift in Sources */,
 				12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */,
 				1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */,
 				12DBF0A322E548B1007BB6A0 /* GroceryCustomCell.swift in Sources */,
+				1201EE8D22EC5BDF00FB9029 /* JoinRoomProfileVC.swift in Sources */,
 				12DBF09F22E5479F007BB6A0 /* GroceryViewController.swift in Sources */,
+				12B68A3B22EC2AF300F5D60D /* GettingStarted.swift in Sources */,
 				1210714922E6E1D00054CC6C /* SignupVC.swift in Sources */,
 				12AEFFD622E4E467005976DF /* Roommates.xcdatamodeld in Sources */,
 				12DBF09D22E546DA007BB6A0 /* Grocery.swift in Sources */,
+				1201EE8922EC4CB800FB9029 /* JoinRoomVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

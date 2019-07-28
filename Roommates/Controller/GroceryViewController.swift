@@ -15,7 +15,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Connections and Variables
     var blur = UIVisualEffectView()
     var items : [GroceryItem] = [GroceryItem]()
-    let ref = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))")
+    let ref = Database.database().reference(withPath: "\(String(describing: Auth.auth().currentUser!.uid))")
     var i = 0
     var DeleteItem = false
 
