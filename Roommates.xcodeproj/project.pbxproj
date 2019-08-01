@@ -11,6 +11,7 @@
 		1201EE8922EC4CB800FB9029 /* JoinRoomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */; };
 		1201EE8B22EC545B00FB9029 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */; };
 		1201EE8D22EC5BDF00FB9029 /* JoinRoomProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */; };
+		1206759322F2707D00302656 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1206759222F2707D00302656 /* Users.swift */; };
 		1210714922E6E1D00054CC6C /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714822E6E1D00054CC6C /* SignupVC.swift */; };
 		1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714A22E6E1DC0054CC6C /* LoginViewController.swift */; };
 		1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714E22E6F38B0054CC6C /* tabBarViewController.swift */; };
@@ -38,6 +39,7 @@
 		1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomVC.swift; sourceTree = "<group>"; };
 		1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomProfileVC.swift; sourceTree = "<group>"; };
+		1206759222F2707D00302656 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		1210714822E6E1D00054CC6C /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		1210714A22E6E1DC0054CC6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1210714D22E6EB9D0054CC6C /* Roommates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roommates.entitlements; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				12DBF09C22E546DA007BB6A0 /* Grocery.swift */,
+				1206759222F2707D00302656 /* Users.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */,
 				1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */,
 				12DBF0A322E548B1007BB6A0 /* GroceryCustomCell.swift in Sources */,
+				1206759322F2707D00302656 /* Users.swift in Sources */,
 				1201EE8D22EC5BDF00FB9029 /* JoinRoomProfileVC.swift in Sources */,
 				12DBF09F22E5479F007BB6A0 /* GroceryViewController.swift in Sources */,
 				12B68A3B22EC2AF300F5D60D /* GettingStarted.swift in Sources */,

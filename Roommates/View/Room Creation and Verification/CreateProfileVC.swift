@@ -15,6 +15,9 @@ class CreateProfileVC: UIViewController {
     @IBOutlet weak var lblUsername: UITextField!
     @IBOutlet weak var lblEmail: UITextField!
     @IBOutlet weak var lblPhoneNumber: UITextField!
+    var roomName = ""
+    var password = ""
+    
     
     @IBAction func btnBack(_ sender: Any) {
         self.dismiss(animated:true)
