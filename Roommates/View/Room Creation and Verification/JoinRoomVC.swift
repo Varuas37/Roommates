@@ -34,10 +34,12 @@ class JoinRoomVC: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             else{
+                
                 UserDefaults.standard.set(self.lblEmail.text!, forKey: "email")
                 UserDefaults.standard.set(self.lblPassword.text!, forKey: "password")
                 UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey:  "mainKey")
-                 UserDefaults.standard.synchronize()
+                UserDefaults.standard.synchronize()
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "JoinRoomProfileVC") as! JoinRoomProfileVC
                 self.present(newViewController, animated: true, completion: nil)

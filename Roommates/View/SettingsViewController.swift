@@ -38,12 +38,11 @@ class SettingsViewController: UIViewController {
                     self.present(newViewController, animated: true, completion: nil)
                 }
                 else{
-                    print(error)
+                    print(error ?? "No Error")
                 }
             }
             blur.removeFromSuperview()
             ViewAddRoommate.removeFromSuperview()
-            
         }
         else{
             ViewAddRoommate.shake()
@@ -88,20 +87,20 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         print(Auth.auth().currentUser?.uid)
     }
-    override func viewWillAppear(_ animated: Bool) {
-        
-       super.viewWillAppear(true)
-        if Auth.auth().currentUser?.uid == nil {
-            Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
-                if error == nil{
-                    print("Success✅")
-                }
-                else{
-                    print("Sorry ❌")
-                }
-            }
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//       super.viewWillAppear(true)
+//        if Auth.auth().currentUser?.uid == nil {
+//            Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
+//                if error == nil{
+//                    print("Success✅")
+//                }
+//                else{
+//                    print("Sorry ❌")
+//                }
+//            }
+//        }
+//    }
     
 
     /*

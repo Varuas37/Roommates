@@ -16,6 +16,11 @@ class tabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+  
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if Auth.auth().currentUser?.uid == nil{
             Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
                 if error == nil {
@@ -26,7 +31,6 @@ class tabBarViewController: UITabBarController {
                 }
             }
         }
-        // Do any additional setup after loading the view.
     }
     
 
