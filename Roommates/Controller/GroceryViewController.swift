@@ -20,7 +20,8 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     var DeleteItem = false
     let mainUserEmail = UserDefaults.standard.string(forKey: "email")
     let mainUserPassword = UserDefaults.standard.string(forKey: "password")
-
+    let userRef = Database.database().reference(fromURL: "https://roommates-997.firebaseio.com").child("Users/\((Auth.auth().currentUser?.uid)!)")
+    var databaseKey = ""
 //    Pop-over View
     @IBOutlet var ViewAddItem: UIView!
     @IBOutlet weak var lblNewItem: UITextField!
@@ -30,6 +31,8 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     //    MARK: Add and Cancel Buttons
     @IBAction func btnAddNewItem(_ sender: Any) {
+        
+      
 
         if lblNewItem.text! == "" {
             ViewAddItem.shake()
@@ -85,6 +88,8 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         super.viewDidLoad()
         self.TableView.reloadData()
+        
+        
         //Design few UI elements. Function is at the last of this page.
         redesign()
         if Auth.auth().currentUser?.uid == nil{
@@ -122,6 +127,14 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.items = newItems
             self.TableView.reloadData()
         })
+        userRef.observe(DataEventType.value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let key = value?["key"] as? String ?? ""
+            self.databaseKey = key
+            print(self.databaseKey)
+            print("🥵\(value)")
+            print("🥵😓\(self.userRef)")
+        }
         
     }
     
