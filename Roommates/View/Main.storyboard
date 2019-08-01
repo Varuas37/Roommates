@@ -134,7 +134,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnAddRoommate:" destination="gC9-sK-uRG" eventType="touchUpInside" id="Ui6-Ju-chG"/>
+                                    <action selector="btnAddRoommate:" destination="gC9-sK-uRG" eventType="touchUpInside" id="ud4-US-LEU"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="GroceryBottomContainer" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-qy-Far">
@@ -258,8 +258,7 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="btnAddNewItem:" destination="abu-0S-M7y" eventType="touchUpInside" id="YHM-Ke-yzj"/>
-                                <action selector="btnAddNewRoommate:" destination="gC9-sK-uRG" eventType="touchUpInside" id="jT7-c0-Um2"/>
+                                <action selector="btnAddNewRoommate:" destination="gC9-sK-uRG" eventType="touchUpInside" id="8J5-h2-Hwa"/>
                             </connections>
                         </button>
                     </subviews>
@@ -318,7 +317,7 @@
         <!--Grocery View Controller-->
         <scene sceneID="UVA-il-q6x">
             <objects>
-                <viewController storyboardIdentifier="groceryVC" id="abu-0S-M7y" customClass="GroceryViewController" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroceryViewController" id="abu-0S-M7y" customClass="GroceryViewController" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CNw-2Z-gGQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -550,7 +549,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="Wwt-LO-7iT">
             <objects>
-                <tabBarController storyboardIdentifier="tabControllerVC" id="1Ib-ml-w1I" customClass="tabBarViewController" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarViewController" id="1Ib-ml-w1I" customClass="tabBarViewController" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="4hU-Lw-9sg"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aga-FH-bZ7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -588,7 +587,7 @@
         <!--Login-->
         <scene sceneID="qHk-ax-K0y">
             <objects>
-                <viewController storyboardIdentifier="loginVC" title="Login" id="Pxw-OW-Wir" customClass="JoinRoomVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinRoomVC" title="Login" id="Pxw-OW-Wir" customClass="JoinRoomVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="l8f-Zz-pNG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,7 +672,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="0Jd-Ar-eSi" kind="presentation" id="2HI-J4-T9n"/>
+                                            <action selector="btnNext:" destination="Pxw-OW-Wir" eventType="touchUpInside" id="vsO-Ak-TUC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIS-Is-1aZ">
@@ -725,8 +724,7 @@
         <!--Join Room ProfileVC-->
         <scene sceneID="qdA-5z-Xwx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gCD-AI-Zn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="0Jd-Ar-eSi" customClass="JoinRoomProfileVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinRoomProfileVC" id="0Jd-Ar-eSi" customClass="JoinRoomProfileVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aak-58-QZy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -837,6 +835,7 @@
                                                 <connections>
                                                     <action selector="btnNext:" destination="0Jd-Ar-eSi" eventType="touchUpInside" id="SyP-1J-WDJ"/>
                                                     <action selector="lblNext:" destination="bZk-LL-jRr" eventType="touchUpInside" id="wiF-UC-74Q"/>
+                                                    <segue destination="1Ib-ml-w1I" kind="presentation" id="NLD-XS-QAy"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-v5-Tyw">
@@ -886,6 +885,7 @@
                         <outlet property="lblUsername" destination="58m-MF-Pp2" id="7UE-qB-oHF"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCD-AI-Zn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4206" y="739"/>
         </scene>
@@ -1052,7 +1052,7 @@
         <!--Signup-->
         <scene sceneID="wfo-aD-ygl">
             <objects>
-                <viewController title="Signup" id="RwE-dV-AoQ" customClass="CreateRoomVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateRoomVC" title="Signup" id="RwE-dV-AoQ" customClass="CreateRoomVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JOk-pF-BFd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1238,7 +1238,7 @@
         <!--Create ProfileVC-->
         <scene sceneID="EZF-D9-qCf">
             <objects>
-                <viewController id="bZk-LL-jRr" customClass="CreateProfileVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateProfileVC" id="bZk-LL-jRr" customClass="CreateProfileVC" customModule="Roommates" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pvr-vw-ai8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -11027,4 +11027,7 @@ SgAIx1IACMdVAAjHZwAIx2oACMdvAAAAAAAABAEAAAAAAAAAbQAAAAAAAAAAAAAAAAAIx3E
         </image>
         <image name="money-bag" width="26" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NLD-XS-QAy"/>
+    </inferredMetricsTieBreakers>
 </document>

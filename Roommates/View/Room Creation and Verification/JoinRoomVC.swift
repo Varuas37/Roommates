@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class JoinRoomVC: UIViewController {
 
@@ -19,7 +20,23 @@ class JoinRoomVC: UIViewController {
     }
     @IBAction func btnNext(_ sender: Any) {
         //Adding the popOver Subview
-     
+        Auth.auth().signIn(withEmail: lblEmail.text!, password: lblPassword.text!) { (user, error) in
+            if let error = error, user == nil {
+                let alert = UIAlertController(title: "Sign In Failed",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else{
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "JoinRoomProfileVC") as! JoinRoomProfileVC
+                self.present(newViewController, animated: true, completion: nil)
+            }
+            
+        }
         
     }
     
@@ -31,14 +48,5 @@ class JoinRoomVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

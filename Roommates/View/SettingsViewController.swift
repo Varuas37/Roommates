@@ -17,7 +17,9 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func btnAddNewRoommate(_ sender: Any) {
-        //Create a user database with reference 
+        //Create a user database with reference
+        
+        
         
     }
     @IBAction func btnCancel(_ sender: Any) {
@@ -36,6 +38,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func btnAddRoommate(_ sender: Any) {
+        // This shows the option to add a new Roommate
         view.addSubview(blur)
         view.addSubview(ViewAddRoommate)
         

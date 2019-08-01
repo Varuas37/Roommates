@@ -84,8 +84,8 @@
 			children = (
 				12B68A3A22EC2AF300F5D60D /* GettingStarted.swift */,
 				1201EE8522EC375500FB9029 /* CreateRoomVC.swift */,
-				1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */,
 				1201EE8A22EC545B00FB9029 /* CreateProfileVC.swift */,
+				1201EE8822EC4CB800FB9029 /* JoinRoomVC.swift */,
 				1201EE8C22EC5BDF00FB9029 /* JoinRoomProfileVC.swift */,
 			);
 			path = "Room Creation and Verification";

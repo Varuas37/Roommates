@@ -25,6 +25,7 @@ class CreateProfileVC: UIViewController {
     
     @IBAction func lblNext(_ sender: Any) {
         let password = UserDefaults.standard.string(forKey: "password")
+        UserDefaults.standard.set(lblEmail.text!, forKey: "email")
         let email = lblEmail.text!
         Auth.auth().createUser(withEmail: email, password: password!) { (authResult, error) in
             
@@ -32,11 +33,12 @@ class CreateProfileVC: UIViewController {
                 Auth.auth().signIn(withEmail: email, password: password!)
                 let ref = Database.database().reference(withPath: "Users")
                 let users = ref.child(Auth.auth().currentUser!.uid)
-                
+                let userItem = Users(username: self.lblUsername.text!, email: self.lblEmail.text!, roomnumber: self.roomName, phone: self.lblPhoneNumber.text!, key: (Auth.auth().currentUser?.uid)!)
+                users.setValue(userItem.toAnyObject())
           
                 
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabControllerVC") as! tabBarViewController
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
                 self.present(newViewController, animated: true, completion: nil)
             }
             else{
