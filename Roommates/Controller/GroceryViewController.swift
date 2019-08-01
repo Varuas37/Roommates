@@ -47,10 +47,10 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             let groceryItem = GroceryItem(name: lblNewItem.text!,
                                           addedByUser: Auth.auth().currentUser?.email ?? "nil",
                                           completed: false,
-                                          key: "\(i)")
+                                          key: "\((self.ref.child("Grocery").child("\(databaseKey)").childByAutoId().key)!)")
             i = i+1
             // 3
-            let groceryItemRef = self.ref.child(lblNewItem.text!.lowercased())
+            let groceryItemRef = self.ref.child("Grocery").child("\(databaseKey)").childByAutoId()
             
             // 4
             groceryItemRef.setValue(groceryItem.toAnyObject())
@@ -98,9 +98,18 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
                     print("Successful😅")
                 }
                 else{
-                    print("❌\(error)")
+                    print("❌\(error!)")
                 }
             }
+        }
+        //Get the userDatabase
+        userRef.observe(DataEventType.value) { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let key = value?["key"] as? String ?? ""
+            self.databaseKey = key
+            print(self.databaseKey)
+            print("🥵\(value)")
+            print("🥵😓\(self.userRef)")
         }
         
         //Blur
@@ -115,6 +124,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         TableView.register(UINib(nibName: "GroceryCustomCell", bundle: nil), forCellReuseIdentifier: "cell")
         TableView.separatorStyle = .none
         // Do any additional setup after loading the view.
+        
         ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
             for child in snapshot.children {
@@ -127,17 +137,12 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.items = newItems
             self.TableView.reloadData()
         })
-        userRef.observe(DataEventType.value) { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let key = value?["key"] as? String ?? ""
-            self.databaseKey = key
-            print(self.databaseKey)
-            print("🥵\(value)")
-            print("🥵😓\(self.userRef)")
-        }
+        print("😁\(self.items)")
+        //Getting the reference to the database.
         
     }
     
+  
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
