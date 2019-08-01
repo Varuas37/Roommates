@@ -25,6 +25,7 @@ class tabBarViewController: UITabBarController {
             Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
                 if error == nil {
                     print("Successful😅")
+                    
                 }
                 else{
                     print("❌\(error)")

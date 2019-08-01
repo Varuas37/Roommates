@@ -28,8 +28,10 @@ class SettingsViewController: UIViewController {
                     Auth.auth().signIn(withEmail: self.lblRoommateEmail.text!, password: self.lblPassword.text!)
                     let ref = Database.database().reference(withPath: "Users")
                     let users = ref.child(Auth.auth().currentUser!.uid)
-                    
-                    let userItem = Users(username: "", email: self.lblRoommateEmail.text!, roomnumber: "", phone: "", key: self.key!)
+                    guard let email = self.lblRoommateEmail.text else{
+                        return
+                    }
+                    let userItem = Users(username: "", email: email, roomnumber: "", phone: "", admin: false, key: self.key!)
                     users.setValue(userItem.toAnyObject())
                     try! Auth.auth().signOut()
                     

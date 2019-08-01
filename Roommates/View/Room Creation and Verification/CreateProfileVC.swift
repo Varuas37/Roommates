@@ -33,11 +33,13 @@ class CreateProfileVC: UIViewController {
                 UserDefaults.standard.set(self.lblEmail.text!, forKey: "email")
                 UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "mainKey")
                 UserDefaults.standard.synchronize()
-                
+                guard let username = self.lblUsername.text, let email = self.lblEmail.text, let phone = self.lblPhoneNumber.text else{
+                    return
+                }
                 Auth.auth().signIn(withEmail: email, password: self.password)
                 let ref = Database.database().reference(withPath: "Users")
                 let users = ref.child(Auth.auth().currentUser!.uid)
-                let userItem = Users(username: self.lblUsername.text!, email: self.lblEmail.text!, roomnumber: self.roomName, phone: self.lblPhoneNumber.text!, key: (Auth.auth().currentUser?.uid)!)
+                let userItem = Users(username: username, email: email, roomnumber: self.roomName, phone: phone, admin : true, key: (Auth.auth().currentUser?.uid)!)
                 users.setValue(userItem.toAnyObject())
           
                 
