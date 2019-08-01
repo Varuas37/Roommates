@@ -24,13 +24,17 @@ class CreateProfileVC: UIViewController {
     }
     
     @IBAction func lblNext(_ sender: Any) {
-        let password = UserDefaults.standard.string(forKey: "password")
-        UserDefaults.standard.set(lblEmail.text!, forKey: "email")
+        
         let email = lblEmail.text!
-        Auth.auth().createUser(withEmail: email, password: password!) { (authResult, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             
             if error == nil{
-                Auth.auth().signIn(withEmail: email, password: password!)
+                UserDefaults.standard.set(self.password,forKey: "password")
+                UserDefaults.standard.set(self.lblEmail.text!, forKey: "email")
+                UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey: "mainKey")
+                UserDefaults.standard.synchronize()
+                
+                Auth.auth().signIn(withEmail: email, password: self.password)
                 let ref = Database.database().reference(withPath: "Users")
                 let users = ref.child(Auth.auth().currentUser!.uid)
                 let userItem = Users(username: self.lblUsername.text!, email: self.lblEmail.text!, roomnumber: self.roomName, phone: self.lblPhoneNumber.text!, key: (Auth.auth().currentUser?.uid)!)

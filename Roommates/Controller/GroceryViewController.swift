@@ -15,9 +15,11 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK: Connections and Variables
     var blur = UIVisualEffectView()
     var items : [GroceryItem] = [GroceryItem]()
-    let ref = Database.database().reference(withPath: "\(String(describing: Auth.auth().currentUser!.uid))")
+    let ref = Database.database().reference(fromURL: "https://roommates-997.firebaseio.com/")
     var i = 0
     var DeleteItem = false
+    let mainUserEmail = UserDefaults.standard.string(forKey: "email")
+    let mainUserPassword = UserDefaults.standard.string(forKey: "password")
 
 //    Pop-over View
     @IBOutlet var ViewAddItem: UIView!
@@ -85,6 +87,16 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.TableView.reloadData()
         //Design few UI elements. Function is at the last of this page.
         redesign()
+        if Auth.auth().currentUser?.uid == nil{
+            Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
+                if error == nil {
+                    print("Successful😅")
+                }
+                else{
+                    print("❌\(error)")
+                }
+            }
+        }
         
         //Blur
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)

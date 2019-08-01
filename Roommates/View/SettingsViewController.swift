@@ -14,11 +14,43 @@ class SettingsViewController: UIViewController {
     @IBOutlet var ViewAddRoommate: UIView!
     @IBOutlet weak var lblRoommateEmail: UITextField!
     @IBOutlet weak var lblPassword: UITextField!
-    
+    let key = UserDefaults.standard.string(forKey: "mainKey")
+    let mainUserEmail = UserDefaults.standard.string(forKey: "email")
+    let mainUserPassword = UserDefaults.standard.string(forKey: "password")
     
     @IBAction func btnAddNewRoommate(_ sender: Any) {
-        //Create a user database with reference
         
+        //Create a user database with reference
+        if lblPassword.text! == mainUserPassword!{
+            Auth.auth().createUser(withEmail: lblRoommateEmail.text!, password: lblPassword.text!) { (authResult, error) in
+                
+                if error == nil{
+                    Auth.auth().signIn(withEmail: self.lblRoommateEmail.text!, password: self.lblPassword.text!)
+                    let ref = Database.database().reference(withPath: "Users")
+                    let users = ref.child(Auth.auth().currentUser!.uid)
+                    
+                    let userItem = Users(username: "", email: self.lblRoommateEmail.text!, roomnumber: "", phone: "", key: self.key!)
+                    users.setValue(userItem.toAnyObject())
+                    try! Auth.auth().signOut()
+                    
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let newViewController = storyBoard.instantiateViewController(withIdentifier: "tabBarViewController") as! tabBarViewController
+                    self.present(newViewController, animated: true, completion: nil)
+                }
+                else{
+                    print(error)
+                }
+            }
+            blur.removeFromSuperview()
+            ViewAddRoommate.removeFromSuperview()
+            
+        }
+        else{
+            ViewAddRoommate.shake()
+            lblPassword.borderColor = .red
+            lblPassword.placeholder = "Password don't match"
+        }
+    
         
         
     }
@@ -55,6 +87,20 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         print(Auth.auth().currentUser?.uid)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+       super.viewWillAppear(true)
+        if Auth.auth().currentUser?.uid == nil {
+            Auth.auth().signIn(withEmail: self.mainUserEmail!, password: self.mainUserPassword!) { (user, error) in
+                if error == nil{
+                    print("Success✅")
+                }
+                else{
+                    print("Sorry ❌")
+                }
+            }
+        }
     }
     
 

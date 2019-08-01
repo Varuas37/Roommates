@@ -15,6 +15,7 @@ class JoinRoomProfileVC: UIViewController {
     
     @IBAction func btnNext(_ sender: Any) {
         
+        
     }
     
     @IBAction func btnBack(_ sender: Any) {

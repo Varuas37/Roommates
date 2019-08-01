@@ -19,9 +19,12 @@ class JoinRoomVC: UIViewController {
         
     }
     @IBAction func btnNext(_ sender: Any) {
+       
         //Adding the popOver Subview
         Auth.auth().signIn(withEmail: lblEmail.text!, password: lblPassword.text!) { (user, error) in
             if let error = error, user == nil {
+               
+               
                 let alert = UIAlertController(title: "Sign In Failed",
                                               message: error.localizedDescription,
                                               preferredStyle: .alert)
@@ -31,6 +34,10 @@ class JoinRoomVC: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
             else{
+                UserDefaults.standard.set(self.lblEmail.text!, forKey: "email")
+                UserDefaults.standard.set(self.lblPassword.text!, forKey: "password")
+                UserDefaults.standard.set(Auth.auth().currentUser?.uid, forKey:  "mainKey")
+                 UserDefaults.standard.synchronize()
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "JoinRoomProfileVC") as! JoinRoomProfileVC
                 self.present(newViewController, animated: true, completion: nil)
