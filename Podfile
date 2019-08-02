@@ -12,4 +12,5 @@ target 'Roommates' do
   pod 'FirebaseUI/Phone'
   pod 'SVProgressHUD'
   pod 'Firebase/Database'
+  pod 'Charts'
 end
