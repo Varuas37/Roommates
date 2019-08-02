@@ -108,6 +108,8 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             let key = value?["key"] as? String ?? ""
             self.databaseKey = key
             print(self.databaseKey)
+            UserDefaults.standard.set(key, forKey: "databaseKey")
+            UserDefaults.standard.synchronize()
             print("🥵\(value)")
             print("🥵😓\(self.userRef)")
         }
@@ -125,7 +127,9 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         TableView.separatorStyle = .none
         // Do any additional setup after loading the view.
         
-        ref.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
+       let DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey")
+        let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey!)")
+        groceryItemRef.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
@@ -172,7 +176,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
    
     
     
-    //MARK: Swipe Actions
+    //MARK: Leading Swipe Actions
     
     func tableView(_ tableView: UITableView,
                        leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
@@ -183,8 +187,9 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
 
                 self.items[indexPath.row].completed = true
-                let status = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))/\(self.items[indexPath.row].name.lowercased())")
-                     
+                let DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey")
+                let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey!)")
+                let status = groceryItemRef.child("\(self.items[indexPath.row].key)")
                 status.updateChildValues(["completed":true])
                 success(true)
                 })
@@ -194,7 +199,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 itemtoreturn = UISwipeActionsConfiguration(actions: [Completed])
             return itemtoreturn
         }
-
+    //MARK: Trailing Swipe Action
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
@@ -215,8 +220,9 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             
             self.items[indexPath.row].completed = true
-            let status = Database.database().reference(withPath: "GroceryList\(String(describing: Auth.auth().currentUser?.uid))/\(self.items[indexPath.row].name.lowercased())")
-            
+            let DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey")
+            let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey!)")
+            let status = groceryItemRef.child("\(self.items[indexPath.row].key)")
             status.updateChildValues(["completed":false])
             success(true)
         })
@@ -248,8 +254,10 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var CustomAlert: UIView!
     @IBAction func btnConfirm(_ sender: Any) {
         dismissCustomAlert()
-        let deletedItem = self.ref.child(self.items[IndexPathForCell.row].name.lowercased())
-        deletedItem.removeValue()
+        let DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey")
+        let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey!)")
+        let status = groceryItemRef.child("\(self.items[IndexPathForCell.row].key)")
+        status.removeValue()
         //Remove item from array
         self.items.remove(at: IndexPathForCell.row)
         self.TableView.deleteRows(at: [IndexPathForCell], with: .fade)
