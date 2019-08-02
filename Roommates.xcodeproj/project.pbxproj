@@ -17,6 +17,7 @@
 		1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714E22E6F38B0054CC6C /* tabBarViewController.swift */; };
 		1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210715022E712C80054CC6C /* SettingsViewController.swift */; };
 		121EF5A422F3B8AF00CF27F9 /* FinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */; };
+		1272DFBF22F3E464003500DE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1272DFBE22F3E464003500DE /* CategoryViewController.swift */; };
 		128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128F97DF22E542B500EEFC54 /* Default-568h@2x.png */; };
 		12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCD22E4E467005976DF /* AppDelegate.swift */; };
 		12AEFFD022E4E467005976DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCF22E4E467005976DF /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		1210714E22E6F38B0054CC6C /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tabBarViewController.swift; path = Roommates/View/TabBarVC/tabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		1210715022E712C80054CC6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceViewController.swift; sourceTree = "<group>"; };
+		1272DFBE22F3E464003500DE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		128F97DF22E542B500EEFC54 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		12AEFFCA22E4E467005976DF /* Roommates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEFFCD22E4E467005976DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,11 +108,37 @@
 			isa = PBXGroup;
 			children = (
 				1210714E22E6F38B0054CC6C /* tabBarViewController.swift */,
-				12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */,
-				121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */,
-				1210715022E712C80054CC6C /* SettingsViewController.swift */,
+				1272DFC022F3E46F003500DE /* Finance */,
+				1272DFC122F3E482003500DE /* Grocery */,
+				1272DFC222F3E4A5003500DE /* Settings */,
 			);
 			path = TabBarVC;
+			sourceTree = "<group>";
+		};
+		1272DFC022F3E46F003500DE /* Finance */ = {
+			isa = PBXGroup;
+			children = (
+				121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */,
+				1272DFBE22F3E464003500DE /* CategoryViewController.swift */,
+			);
+			path = Finance;
+			sourceTree = "<group>";
+		};
+		1272DFC122F3E482003500DE /* Grocery */ = {
+			isa = PBXGroup;
+			children = (
+				12DBF0A022E54870007BB6A0 /* Grocery Table */,
+				12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */,
+			);
+			path = Grocery;
+			sourceTree = "<group>";
+		};
+		1272DFC222F3E4A5003500DE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1210715022E712C80054CC6C /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		128F97DC22E5413500EEFC54 /* Model */ = {
@@ -178,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				1210714C22E6E1E10054CC6C /* User Verification VC */,
-				12DBF0A022E54870007BB6A0 /* Grocery Table */,
 				1201EE8722EC4C7C00FB9029 /* Room Creation and Verification */,
 				121EF5A522F3B8C300CF27F9 /* TabBarVC */,
 				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
@@ -359,6 +386,7 @@
 				1201EE8B22EC545B00FB9029 /* CreateProfileVC.swift in Sources */,
 				1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */,
 				1201EE8622EC375500FB9029 /* CreateRoomVC.swift in Sources */,
+				1272DFBF22F3E464003500DE /* CategoryViewController.swift in Sources */,
 				12DBF0A922E5E28F007BB6A0 /* CompletedTableViewCell.swift in Sources */,
 				1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */,
 				12AEFFD022E4E467005976DF /* ViewController.swift in Sources */,

@@ -11,13 +11,14 @@ import Firebase
 
 class CreateProfileVC: UIViewController {
 
-    
+    @IBOutlet weak var imgProfileImage: UIImageView!
     @IBOutlet weak var lblUsername: UITextField!
     @IBOutlet weak var lblEmail: UITextField!
     @IBOutlet weak var lblPhoneNumber: UITextField!
     var roomName = ""
     var password = ""
-    
+    var activityView:UIActivityIndicatorView!
+    var imagePicker : UIImagePickerController!
     
     @IBAction func btnBack(_ sender: Any) {
         self.dismiss(animated:true)
@@ -56,20 +57,45 @@ class CreateProfileVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         
+        let imageTap = UITapGestureRecognizer(target: self, action: #selector(openImagePicker))
+        imgProfileImage.isUserInteractionEnabled = true
+        imgProfileImage.addGestureRecognizer(imageTap)
+        imgProfileImage.layer.cornerRadius = imgProfileImage.bounds.height / 2
+        imgProfileImage.clipsToBounds = true
+        //tapToChangeProfileButton.addTarget(self, action: #selector(openImagePicker), for: .touchUpInside)
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return .lightContent
+        }
+    }
+    
+    @objc func openImagePicker(_ sender:Any) {
+        // Open Image Picker
+        self.present(imagePicker, animated: true, completion: nil)
+    }
         // Do any additional setup after loading the view.
    
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension CreateProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
-    */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Code here
+        if let pickedImage = info[.editedImage] as? UIImage  {
+             self.imgProfileImage.image = pickedImage
+        }
+         picker.dismiss(animated: true, completion: nil)
+    }
+    
 
 }
