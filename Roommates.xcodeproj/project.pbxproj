@@ -16,6 +16,7 @@
 		1210714B22E6E1DC0054CC6C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714A22E6E1DC0054CC6C /* LoginViewController.swift */; };
 		1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210714E22E6F38B0054CC6C /* tabBarViewController.swift */; };
 		1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1210715022E712C80054CC6C /* SettingsViewController.swift */; };
+		121EF5A422F3B8AF00CF27F9 /* FinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */; };
 		128F97E022E542B500EEFC54 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 128F97DF22E542B500EEFC54 /* Default-568h@2x.png */; };
 		12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCD22E4E467005976DF /* AppDelegate.swift */; };
 		12AEFFD022E4E467005976DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AEFFCF22E4E467005976DF /* ViewController.swift */; };
@@ -43,8 +44,9 @@
 		1210714822E6E1D00054CC6C /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		1210714A22E6E1DC0054CC6C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1210714D22E6EB9D0054CC6C /* Roommates.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Roommates.entitlements; sourceTree = "<group>"; };
-		1210714E22E6F38B0054CC6C /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tabBarViewController.swift; path = Roommates/View/tabBarViewController.swift; sourceTree = SOURCE_ROOT; };
+		1210714E22E6F38B0054CC6C /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = tabBarViewController.swift; path = Roommates/View/TabBarVC/tabBarViewController.swift; sourceTree = SOURCE_ROOT; };
 		1210715022E712C80054CC6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceViewController.swift; sourceTree = "<group>"; };
 		128F97DF22E542B500EEFC54 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		12AEFFCA22E4E467005976DF /* Roommates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AEFFCD22E4E467005976DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,17 @@
 			path = "User Verification VC";
 			sourceTree = "<group>";
 		};
+		121EF5A522F3B8C300CF27F9 /* TabBarVC */ = {
+			isa = PBXGroup;
+			children = (
+				1210714E22E6F38B0054CC6C /* tabBarViewController.swift */,
+				12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */,
+				121EF5A322F3B8AF00CF27F9 /* FinanceViewController.swift */,
+				1210715022E712C80054CC6C /* SettingsViewController.swift */,
+			);
+			path = TabBarVC;
+			sourceTree = "<group>";
+		};
 		128F97DC22E5413500EEFC54 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,7 +127,6 @@
 			children = (
 				12AEFFCD22E4E467005976DF /* AppDelegate.swift */,
 				12AEFFCF22E4E467005976DF /* ViewController.swift */,
-				12DBF09E22E5479F007BB6A0 /* GroceryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,24 +178,23 @@
 			isa = PBXGroup;
 			children = (
 				1210714C22E6E1E10054CC6C /* User Verification VC */,
-				12DBF0A022E54870007BB6A0 /* Grocery */,
+				12DBF0A022E54870007BB6A0 /* Grocery Table */,
 				1201EE8722EC4C7C00FB9029 /* Room Creation and Verification */,
-				1210715022E712C80054CC6C /* SettingsViewController.swift */,
+				121EF5A522F3B8C300CF27F9 /* TabBarVC */,
 				12AEFFE222E4E4A7005976DF /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		12DBF0A022E54870007BB6A0 /* Grocery */ = {
+		12DBF0A022E54870007BB6A0 /* Grocery Table */ = {
 			isa = PBXGroup;
 			children = (
 				12DBF0A122E548B1007BB6A0 /* GroceryCustomCell.swift */,
 				12DBF0A222E548B1007BB6A0 /* GroceryCustomCell.xib */,
 				12DBF0A722E5E28F007BB6A0 /* CompletedTableViewCell.swift */,
 				12DBF0A822E5E28F007BB6A0 /* CompletedTableViewCell.xib */,
-				1210714E22E6F38B0054CC6C /* tabBarViewController.swift */,
 			);
-			path = Grocery;
+			path = "Grocery Table";
 			sourceTree = "<group>";
 		};
 		23847DA3EBAE88CED6986FEE /* Frameworks */ = {
@@ -352,6 +363,7 @@
 				1210715122E712C80054CC6C /* SettingsViewController.swift in Sources */,
 				12AEFFD022E4E467005976DF /* ViewController.swift in Sources */,
 				12AEFFCE22E4E467005976DF /* AppDelegate.swift in Sources */,
+				121EF5A422F3B8AF00CF27F9 /* FinanceViewController.swift in Sources */,
 				1210714F22E6F38B0054CC6C /* tabBarViewController.swift in Sources */,
 				12DBF0A322E548B1007BB6A0 /* GroceryCustomCell.swift in Sources */,
 				1206759322F2707D00302656 /* Users.swift in Sources */,

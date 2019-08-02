@@ -249,6 +249,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         lblNewItem.text = ""
     }
 
+    
     //Delete Item
     var IndexPathForCell = IndexPath()
     @IBOutlet var CustomAlert: UIView!
