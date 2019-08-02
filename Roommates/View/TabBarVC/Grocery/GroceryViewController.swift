@@ -114,6 +114,7 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("🥵😓\(self.userRef)")
         }
         
+        
         //Blur
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -127,8 +128,14 @@ class GroceryViewController: UIViewController, UITableViewDelegate, UITableViewD
         TableView.separatorStyle = .none
         // Do any additional setup after loading the view.
         
-       let DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey")
-        let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey!)")
+        guard var DatabaseKey = UserDefaults.standard.string(forKey: "databaseKey") else{
+            return
+        }
+        if DatabaseKey == ""{
+            DatabaseKey = UserDefaults.standard.string(forKey: "mainKey")!
+        }
+        print("😇" + DatabaseKey)
+        let groceryItemRef = self.ref.child("Grocery").child("\(DatabaseKey)")
         groceryItemRef.queryOrdered(byChild: "completed").observe(.value, with: { snapshot in
             var newItems: [GroceryItem] = []
             for child in snapshot.children {

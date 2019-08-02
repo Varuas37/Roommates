@@ -12,9 +12,10 @@ struct Users {
     let email: String
     var roomnumber: String
     var phone: String
+    var imageurl : String
     var admin: Bool
     
-    init(username: String, email: String, roomnumber: String,phone: String,admin:Bool, key:String = "") {
+    init(username: String, email: String, roomnumber: String,phone: String,admin:Bool, imageurl: String, key:String = "") {
         self.ref = nil
         self.key = key
         self.username = username
@@ -22,6 +23,7 @@ struct Users {
         self.roomnumber = roomnumber
         self.phone = phone
         self.admin = admin
+        self.imageurl = imageurl
     }
     
     init?(snapshot: DataSnapshot) {
@@ -30,6 +32,7 @@ struct Users {
             let username = value["username"] as? String,
             let email = value["email"] as? String,
             let phone = value["phone"] as? String,
+            let imageurl = value["imageurl"] as? String,
             let roomnumber = value["roomnumber"] as? String,
             let admin = value["admin"] as? Bool else {
                 return nil
@@ -42,6 +45,7 @@ struct Users {
         self.roomnumber = roomnumber
         self.phone = phone
         self.admin = admin
+        self.imageurl = imageurl
     }
     
     func toAnyObject() -> Any {
@@ -51,7 +55,8 @@ struct Users {
             "roomnumber": roomnumber,
             "key": key,
             "phone" : phone,
-            "admin" : admin
+            "admin" : admin,
+            "imageurl" : imageurl
         ]
     }
 }

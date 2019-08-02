@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController {
                     guard let email = self.lblRoommateEmail.text else{
                         return
                     }
-                    let userItem = Users(username: "", email: email, roomnumber: "", phone: "", admin: false, key: self.key!)
+                    let userItem = Users(username: "", email: email, roomnumber: "", phone: "", admin: false, imageurl: "" , key: self.key!)
                     users.setValue(userItem.toAnyObject())
                     try! Auth.auth().signOut()
                     
@@ -63,6 +63,9 @@ class SettingsViewController: UIViewController {
 
     @IBAction func btnLogout(_ sender: Any) {
         try! Auth.auth().signOut()
+        UserDefaults.standard.set("", forKey: "email")
+        UserDefaults.standard.set("", forKey: "password")
+        UserDefaults.standard.set("", forKey: "databaseKey")
         
         if let storyboard = self.storyboard {
             let vc = storyboard.instantiateViewController(withIdentifier: "gettingStarted") as! GettingStarted

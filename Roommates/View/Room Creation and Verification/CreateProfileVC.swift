@@ -20,6 +20,7 @@ class CreateProfileVC: UIViewController {
     var activityView:UIActivityIndicatorView!
     var imagePicker : UIImagePickerController!
     
+    
     @IBAction func btnBack(_ sender: Any) {
         self.dismiss(animated:true)
     }
@@ -27,6 +28,7 @@ class CreateProfileVC: UIViewController {
     @IBAction func lblNext(_ sender: Any) {
         
         let email = lblEmail.text!
+        guard let image = imgProfileImage.image else { return }
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             
             if error == nil{
@@ -37,11 +39,16 @@ class CreateProfileVC: UIViewController {
                 guard let username = self.lblUsername.text, let email = self.lblEmail.text, let phone = self.lblPhoneNumber.text else{
                     return
                 }
-                Auth.auth().signIn(withEmail: email, password: self.password)
-                let ref = Database.database().reference(withPath: "Users")
-                let users = ref.child(Auth.auth().currentUser!.uid)
-                let userItem = Users(username: username, email: email, roomnumber: self.roomName, phone: phone, admin : true, key: (Auth.auth().currentUser?.uid)!)
-                users.setValue(userItem.toAnyObject())
+                uploadProfileImage(image, completion: { (url) in
+                    print("I am here 😂")
+                    Auth.auth().signIn(withEmail: email, password: self.password)
+                    let ref = Database.database().reference(withPath: "Users")
+                    let users = ref.child(Auth.auth().currentUser!.uid)
+                    let userItem = Users(username: username, email: email, roomnumber: self.roomName, phone: phone, admin : true, imageurl: "\(url!)", key: (Auth.auth().currentUser?.uid)!)
+                    users.setValue(userItem.toAnyObject())
+                })
+                
+                
           
                 
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -81,9 +88,30 @@ class CreateProfileVC: UIViewController {
         // Open Image Picker
         self.present(imagePicker, animated: true, completion: nil)
     }
-        // Do any additional setup after loading the view.
    
     }
+func uploadProfileImage(_ image:UIImage, completion: @escaping ((_ url:URL?)->())) {
+    guard let uid = Auth.auth().currentUser?.uid else { return }
+    let storageRef = Storage.storage().reference().child("user/Image\(uid)")
+    
+    guard let imageData = image.jpegData(compressionQuality:0.75) else { return }
+    
+    
+    let metaData = StorageMetadata()
+    metaData.contentType = "image/jpg"
+    
+    storageRef.putData(imageData, metadata: metaData) { metaData, error in
+        if error == nil, metaData != nil {
+            
+            storageRef.downloadURL { url, error in
+                completion(url)
+            }
+        } else {
+            // failed
+            completion(nil)
+        }
+    }
+}
 
 extension CreateProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
